@@ -35,5 +35,6 @@ class Map:
                     f"  {item[0]}) {item[1]}"
                     for item in enumerate(self.places, start=1)
                 ],
+                "-" * 40,
             ]
         )
