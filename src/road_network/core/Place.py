@@ -10,7 +10,7 @@ log = Log("Place")
 class Place:
     id: str
     name: str
-    population: int
+    population: float
     latlng: LatLng
 
     @staticmethod
@@ -18,9 +18,12 @@ class Place:
         return Place(
             id=ent.id,
             name=ent.name,
-            population=ent.population,
+            population=ent.population / 1_000,
             latlng=LatLng(*ent.centroid),
         )
 
     def __str__(self):
         return f"Place({self.id}, {self.name})"
+
+    def distance(self, other: "Place") -> float:
+        return self.latlng.distance(other.latlng)
